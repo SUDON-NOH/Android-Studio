@@ -1,0 +1,88 @@
+1. Set TextView
+
+  - Text on XML file
+  
+    1) Set Layout
+    LinearLayout: vertical & horizontal
+    
+    - Typing two lines vertically
+    android:orientation="vertical"  On LinearLayout
+    
+    - Typing two lines horizontally
+    android:orientation="horizontal"  On LinearLayout
+    
+    2) Set TextView
+    <TextView
+        android:layout_width="match_parent"   # fit the width on LinearLayout
+        android:layout_height="wrap_content"  # fit the height on text lines
+        android:textColor="#E20A26CC"         # set the color for text
+        android:textSize="30sp"               # set the size for text
+        android:text="TEXT"/>                 # text
+        
+        
+2. Set Edit Text & Button
+
+  - XML
+  
+  <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/et_ID"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Insert ID..."/>
+
+
+    <Button
+        android:id="@+id/btn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"/>
+
+
+</LinearLayout>
+
+  - Java
+  Tip: when it has error, click alt + enter
+  
+package com.example.sutdy_edittext;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+
+    # Variable declaration
+    EditText et_ID;
+    Button btn_text;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        # first et_ID is a et_ID what was defined on JAVA
+        # Second et_ID is a et_ID what as defined on XML
+        et_ID = findViewById(R.id.et_ID);
+        btn_text = findViewById(R.id.btn_text);
+
+        # Activate Button
+        btn_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_ID.setText("Android");  # When click the button("btn_text"), set the text on editline
+            }
+        });
+    }
+}
